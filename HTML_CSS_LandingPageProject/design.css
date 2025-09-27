@@ -1,0 +1,31 @@
+body {
+  font-family: "Quattrocento", serif;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+  background-color: cadetblue;
+  color: white;
+}
+p {
+  margin-top: 100px;
+}
+.main {
+  background-color: rgb(7, 2, 63);
+  margin: auto;
+  padding: 4px 200px 4px 200px;
+  margin: 0px 80px 0px 80px;
+}
+input {
+  width: 20em;
+  height: 2.2em;
+  border-radius: 6%;
+}
+#submit {
+  width: 9em;
+  height: 5em;
+  border-radius: 30px;
+  margin-top: 1em;
+  background-color: greenyellow;
+  font-weight: bold;
+  font-size: 1em;
+}
