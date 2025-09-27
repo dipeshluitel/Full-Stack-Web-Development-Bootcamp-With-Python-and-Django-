@@ -1,0 +1,30 @@
+body {
+  font-family: "Caesar Dressing", system-ui;
+}
+h1 {
+  text-align: center;
+}
+table {
+  margin: auto;
+  margin-top: 40px;
+}
+td {
+  height: 600px;
+  width: 200px;
+  border: 3px solid white;
+}
+#he1 {
+  background-color: #011627;
+}
+#he2 {
+  background-color: #ff3366;
+}
+#he3 {
+  background-color: #2ec4b6;
+}
+#he4 {
+  background-color: #f6f7f8;
+}
+#he5 {
+  background-color: #20a4f3;
+}
