@@ -1,0 +1,10 @@
+.firstDiv {
+  color: blue;
+}
+.secondDiv {
+  color: rgb(183, 255, 0);
+}
+#singledout {
+  color: burlywood;
+  text-decoration: line-through;
+}

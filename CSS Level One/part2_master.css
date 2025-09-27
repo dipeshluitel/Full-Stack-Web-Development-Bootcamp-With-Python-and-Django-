@@ -1,0 +1,17 @@
+body {
+  background-color: yellow;
+}
+div {
+  background-color: aliceblue;
+  border-width: 1px;
+  border-style: dashed;
+}
+span {
+  background-color: rgb(25, 31, 37);
+  font-family: "Courier New", Courier, monospace;
+  border-width: 1px;
+  border-style: dotted;
+}
+p {
+  color: rgb(186, 35, 9);
+}
