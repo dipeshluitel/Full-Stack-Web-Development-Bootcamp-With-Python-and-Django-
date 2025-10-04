@@ -1,0 +1,19 @@
+Some important Documnet attribute.
+ document.URL : Actual URL of the website
+ document.body: This is everything inside of the body
+ document.head: this is everything inside of the head of the page
+ document.links: links anchored in the page
+
+ Some methods for grabbing elements from the DOM 
+  document.getElementById(): Returns the element with the id 
+  document.getElementByClassName(): Returns list of all elements belonging to a class 
+  document.getElementByTagName():
+  document.querySelector(): Returns the first object matching the CSS style selector 
+  document.querySelectorAll(): Returns all objects matching the CSS style selector 
+
+  EXAMPLE:
+
+  if we want to grab the first h1 and change it color to red we do this.
+
+  var h1Selector = document.querySelector("h1");
+  h1Selector.style.color = "red";
