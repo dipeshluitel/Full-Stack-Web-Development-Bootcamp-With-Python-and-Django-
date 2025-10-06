@@ -1,0 +1,35 @@
+1. Assigning variable using JQuery
+var x = $('h1')
+
+2. styling using JQuery
+x.css('color', 'pink')
+
+3. creating objects
+var defaultStyle = {
+    'color': 'black',
+    'background-color': 'blue',
+    'border': '3px solid black'
+}
+
+4. Using Objects with JQuery
+x.css(defaultStyle)
+
+5.Creating lists of paragraph
+var paraItems = $('p')
+
+6.Styling all Paragraph stored within a list
+paraItems.css('color', 'blue')
+
+//for 1st paragraph only
+paraItems.eq(0).css('color', 'red')
+
+7.changing the text within the tag
+$('tag').text('')
+
+8. Using functionlit like innerHTML
+$('tag').html(html tags)
+
+9. We can manually add and remove classes for a tag
+$('tag').addClass('')
+$('tag').removeClass('')
+$('tag').toggleClass('')
