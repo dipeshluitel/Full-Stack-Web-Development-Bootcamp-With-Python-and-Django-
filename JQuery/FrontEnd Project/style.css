@@ -1,7 +1,7 @@
 .board button {
   width: 100px;
   height: 100px;
-  background-color: beige;
+  background-color: rgb(240, 240, 218);
   margin: 1px;
   border: 3.5px solid black;
   border-radius: 50%;
