@@ -88,3 +88,65 @@ function verticalWin() {
     }
   }
 }
+
+//Diagonal Win
+function diagonalWin() {
+  for (var col = 0; col < 5; col++) {
+    for (var row = 0; row < 7; row++) {
+      if (
+        colorMatchCheck(
+          returnColor(row, col),
+          returnColor(row + 1, col + 1),
+          returnColor(row + 2, col + 2),
+          returnColor(row + 3, col + 3)
+        )
+      ) {
+        console.log("Diagonal Win!");
+        reportWin(row, col);
+        return true;
+      } else if (
+        colorMatchCheck(
+          returnColor(row, col),
+          returnColor(row - 1, col + 1),
+          returnColor(row - 2, col + 2),
+          returnColor(row - 3, col + 3)
+        )
+      ) {
+        console.log("Diagonal Win!");
+        reportWin(row, col);
+        return true;
+      } else {
+        continue;
+      }
+    }
+  }
+}
+
+var currentPlayer = 1;
+var currentName = player1;
+var currentColor = player1Color;
+
+$("h3").text(player1 + " It's your turn, pick a column to drop in!");
+
+$(".board button").on("click", function () {
+  var col = $(this).closest("td").index(); // td returns column number : 0 1 2 3 4 5
+
+  var bottomAvail = checkBottom(col);
+  changeColor(bottomAvail, col, currentColor);
+
+  if (horizontalWinCheck() || verticalWin() || diagonalWin()) {
+    $("h1").text(currentName + " You've Won");
+    $("h3").fadeOut("fast");
+    $("h2").fadeOut("fast");
+  }
+  currentPlayer = currentPlayer * -1;
+  if (currentPlayer === 1) {
+    currentName = player1;
+    $("h3").text(currentName + " It is your turn");
+    currentColor = player1Color;
+  } else {
+    currentName = player2;
+    $("h3").text(currentName + " It is your turn");
+    currentColor = player2Color;
+  }
+});
