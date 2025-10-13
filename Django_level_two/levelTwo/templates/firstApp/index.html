@@ -1,12 +1,36 @@
 <!DOCTYPE html>
+<!-- Third Step -->
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello</title>
+    <title>Django Level One</title>
+    <link rel="stylesheet" href="{%static 'css/mystyle.css'%}" />
   </head>
   <body>
-    <h1>Hello this is a test page!</h1>
-    <h3>{{insert_content}}</h3>
+    <h1>Hi Welcome to Django Level Two!</h1>
+    <h2>Here are your access record:</h2>
+
+    <div class="djangotwo">
+      <!-- Fourth Step -->
+      {% if access_records %}
+      <table>
+        <thead>
+          <th>Site Name</th>
+          <th>Data Accessed</th>
+        </thead>
+        {%for acc in access_records%}
+        <tr>
+          <td>{{acc.name}}</td>
+          <td>{{acc.date}}</td>
+        </tr>
+        {%endfor%}
+      </table>
+
+      {%else%}
+      <p>No ACCESSRECORDS FOUND!</p>
+      {% endif %}
+    </div>
   </body>
 </html>
