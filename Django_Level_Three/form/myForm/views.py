@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from myForm import forms
 
@@ -13,10 +13,12 @@ def formInput(request):
         form = forms.FormName(request.POST)
 
         if form.is_valid():
+           form.save()
            print("Validation Success")
            print("NAME: "+ form.cleaned_data['name'])
            print("EMAIL: "+ form.cleaned_data['email'])
            print("TEXT: "+ form.cleaned_data['text'])
+           return redirect('index')
 
 
     return render(request,'myForm/form.html', context={'form':form})
