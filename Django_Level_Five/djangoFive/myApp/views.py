@@ -63,12 +63,6 @@ def register(request):
 
 
 
-
-
-
-
-
-
 def user_login(request):
 
     if request.method == 'POST':
@@ -90,4 +84,4 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied!")
     
     else:
-        return render(request,'myApp/login.html',{})
+        return render(request,'myApp/login.html')

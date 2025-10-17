@@ -1,8 +1,8 @@
-{% extends "myApp/base.html" %} {% block bodyblock %}
+{% extends "myApp/base.html" %} {% block body_block %}
 <div class="bg-light p-5 rounded-3">
   <h1 class="text-body-emphasis">Please Login</h1>
-  <form col-md-8 method="post" action="{% url 'myApp/user_login'%}">
-    {{% csrf_token %}}
+  <form col-md-8 method="post">
+    {% csrf_token %}
     <label for="username">Username:</label>
     <input type="text" name="username" placeholder="Enter your Username" />
 
