@@ -1,9 +1,28 @@
 from django.shortcuts import render
 from myApp.forms import UserForm,UserProfileInfoForm
 
+
+from django.contrib.auth import authenticate,login,logout
+from django.http import HttpResponseRedirect, HttpResponse
+# from django.core.urlresolver import reverse    (for older version)
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+
+
+
+
 # Create your views here.
 def index(request):
     return render(request,'myApp/index.html')
+
+@login_required
+def special(request):
+    return HttpResponse("You're logged in!")
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
 
 def register(request):
     registered = False
@@ -36,3 +55,39 @@ def register(request):
         profile_form = UserProfileInfoForm()
 
     return render(request,'myApp/registration.html',{'user_form':user_form,'profile_form':profile_form, 'registered': registered})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def user_login(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request,user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("ACCOUNTS NOT ACTIVE")
+        
+        else:
+            print("Someone tried to login and failed!")
+            print(f"Username: {username} Password: {password}")
+            return HttpResponse("Invalid login details supplied!")
+    
+    else:
+        return render(request,'myApp/login.html',{})
