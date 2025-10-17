@@ -1,4 +1,4 @@
-{% extends "myApp/basic.html" %} {% block body_block %}
+{% extends "myApp/base.html" %} {% block body_block %}
 <div class="bg-light p-5 rounded">
   {% if registered %}
   <h1 class="text-body-emphais">Thank-you for Registering</h1>
@@ -7,7 +7,9 @@
   <h1 class="text-body-emphasis">Register Here!</h1>
   <h3>Fill out Form:</h3>
   <form method="post" enctype="multipart/form-data">
-    {% csrf_token %} {{ user_form.as_p }} {{ profile.as_p }}
+    {% csrf_token %} {{ user_form.as_p }} {{ profile_form.as_p }}
+    <input type="submit" value="Register!" />
   </form>
+  {% endif %}
 </div>
 {% endblock %}
