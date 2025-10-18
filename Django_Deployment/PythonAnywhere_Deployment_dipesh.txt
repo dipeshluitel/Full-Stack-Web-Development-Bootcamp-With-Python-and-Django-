@@ -1,0 +1,109 @@
+PythonAnywhere Deployment Guide
+--------------------------------
+
+This note explains how to deploy a Django project on PythonAnywhere step by step.
+
+--------------------------------
+1. Prerequisites
+--------------------------------
+- PythonAnywhere account (https://www.pythonanywhere.com/)
+- A working Django project
+- Virtual environment created
+- Project hosted on GitHub (recommended)
+
+--------------------------------
+2. Create Virtual Environment and install Django
+--------------------------------
+mkvirtualenv --python=python3.13 projName
+pip install -U django==5.2.7
+
+--------------------------------
+3. Upload or Clone Project
+--------------------------------
+Option 1: Clone from GitHub (Recommended)
+--------------------------------
+git clone https://github.com/yourusername/yourproject.git
+cd yourproject
+
+Option 2: Upload Manually
+--------------------------------
+You can upload a zip file of your project using the File tab in PythonAnywhere.
+
+--------------------------------
+4. We migrate and setup now
+--------------------------------
+As it is a Linux terminal unlike windows we use 'ls' instead of 'dir'
+after changing to main working directory
+python manage.py migrate
+python manage.py makemigrations appName
+python manage.py migrate
+python manage.py createsuperuser
+
+
+--------------------------------
+5. We now go to dashboard
+--------------------------------
+we click on add a new web app
+we select the manual configuration and enter the path inside virtual env section
+We enter source code inside code section
+
+--------------------------------
+6. Configure the WSGI File
+--------------------------------
+Go to the Web tab → WSGI configuration file → Edit it as follows:
+
+import os
+import sys
+
+path = '/home/yourusername/yourproject'
+if path not in sys.path:
+    sys.path.append(path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'yourproject.settings'
+
+import django
+django.setup
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
+--------------------------------
+7. Update Django Settings for Deployment
+--------------------------------
+In settings.py:
+
+DEBUG = False
+ALLOWED_HOSTS = ['yourusername.pythonanywhere.com']
+
+Static files configuration:
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+Then run:
+python manage.py collectstatic
+
+
+--------------------------------
+8. Final Checklist
+--------------------------------
+- Virtual environment is active
+- WSGI file configured correctly
+- Static files collected
+- DEBUG set to False
+- Web app reloaded
+
+After all steps, visit your site:
+https://yourusername.pythonanywhere.com
+
+--------------------------------
+9. Tips
+--------------------------------
+- Always reload the web app after changes.
+- Check the PythonAnywhere error log if the site doesn’t load.
+- Update your requirements file regularly:
+  pip freeze > requirements.txt
+
+--------------------------------
+Author: Dipesh Luitel
+BSc. CSIT Student | Python Developer | Django Learner
+--------------------------------
