@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 # from django.http import HttpResponse
 from django.views.generic import View, TemplateView, ListView,DetailView, CreateView, UpdateView, DeleteView
 from . import models
@@ -36,4 +37,8 @@ class SchoolCreateView(CreateView):
 
 class SchoolUpdateView(UpdateView):
     fields = ('name', 'principal')
+    model = models.School 
+
+class SchoolDeleteView(DeleteView):
     model = models.School
+    success_url= reverse_lazy('basic_app:list')
