@@ -18,9 +18,16 @@ from django.contrib import admin
 from django.urls import path
 from firstApp import views
 from django.conf.urls import include
+from django.conf import settings
 
 urlpatterns = [
     path('',views.index, name  = 'index'),
     path('firstApp/',include('firstApp.urls')),
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns=[
+        path('__debug__/',include(debug_toolbar.urls))
+    ]+ urlpatterns
