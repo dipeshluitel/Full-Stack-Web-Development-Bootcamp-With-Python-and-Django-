@@ -11,4 +11,19 @@
   <p>{{student.name}} who is {{student.age}} years old</p>
   {% endfor %}
 </div>
+<div class="conainer"></div>
+<p>
+  <a
+    class="btn brn-warning"
+    href="{% url 'basic_app:update' pk=school_detail.pk%}"
+    >Update</a
+  >
+</p>
+<p>
+  <a
+    class="btn brn-warning"
+    href="{% url 'basic_app:delete' pk=school_detail.pk%}"
+    >Update</a
+  >
+</p>
 {% endblock %}

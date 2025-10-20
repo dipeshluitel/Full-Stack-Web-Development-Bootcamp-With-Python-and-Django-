@@ -33,3 +33,7 @@ class SchoolDetailView(DetailView):
 class SchoolCreateView(CreateView):
     fields = ('__all__')
     model = models.School
+
+class SchoolUpdateView(UpdateView):
+    fields = ('name', 'principal')
+    model = models.School
