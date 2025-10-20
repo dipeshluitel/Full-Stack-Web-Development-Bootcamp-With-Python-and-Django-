@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+  </head>
+  <body>
+    <div class="main">
+      <h1>Here're your Users</h1>
+      {% if users %} {% for user in users%}
+      <ol start="{{forloop.counter}}">
+        <li>User Info</li>
+        <ul>
+          <li>First Name: {{user.f_name}}</li>
+          <li>Last Name: {{user.l_name}}</li>
+          <li>Email: {{user.email}}</li>
+        </ul>
+      </ol>
+      {% endfor %} {% else %}
+      <p>No User Found</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

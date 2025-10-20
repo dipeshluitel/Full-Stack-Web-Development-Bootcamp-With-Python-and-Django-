@@ -1,0 +1,5 @@
+First Step: In the views.py file we import any models that we will need to use
+Second Step: We use the view to query the models for data that we will need
+Third Step: We pass results from the model to the templates
+Fourth Step: We edit the templates so it is ready to accept and display the data from the model
+Fifth Step: We Map a URL to the views.py
